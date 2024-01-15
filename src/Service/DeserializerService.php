@@ -27,14 +27,14 @@ class DeserializerService {
         }
 
         foreach ($arr as $log) {
-            $output = [
+            $logClearAndFormatted = [
                 'timestamp' => $log[1],
                 'level' => $log[2],
                 'client_ip' => $log[3],
                 'message' => trim($log[4]),
             ];
-            $logClearAndFormatted[] = $output;
-            $output = [];
+            $output[] = $logClearAndFormatted;
+            $logClearAndFormatted = [];
         }
         
         return $output;

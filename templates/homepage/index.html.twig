@@ -5,7 +5,16 @@
 {% block body %}
 
     <div class="container">
-        
+        {% for log in data %}
+
+            <p class="ubuntu-regular">
+                $>
+                <span class="red">{{log['level']}}</span>
+                <span class="violet">{{log['client_ip']}}</span>
+                <span class="orange">{{log['message']}}</span>
+            </p>
+
+        {% endfor %}
     </div>
 
 {% endblock %}
