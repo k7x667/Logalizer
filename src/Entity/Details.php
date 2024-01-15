@@ -26,6 +26,9 @@ class Details
     #[ORM\Column(type: Types::TEXT)]
     private ?string $message = null;
 
+    #[ORM\ManyToOne(inversedBy: 'log')]
+    private ?Log $log = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +78,18 @@ class Details
     public function setMessage(string $message): static
     {
         $this->message = $message;
+
+        return $this;
+    }
+
+    public function getLog(): ?Log
+    {
+        return $this->log;
+    }
+
+    public function setLog(?Log $log): static
+    {
+        $this->log = $log;
 
         return $this;
     }
