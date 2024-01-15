@@ -21,6 +21,16 @@ class LogRepository extends ServiceEntityRepository
         parent::__construct($registry, Log::class);
     }
 
+    /**
+     * @return Log[] Returns a string of Log objects
+     */
+    public function findAll(): array
+    {
+        return $this->createQueryBuilder("l")
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Log[] Returns an array of Log objects
 //     */

@@ -17,7 +17,7 @@ class Log
     private ?int $id = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $content = null;
+    public ?string $content = null;
 
     #[ORM\OneToMany(mappedBy: 'log', targetEntity: Details::class)]
     private Collection $log;
@@ -72,5 +72,10 @@ class Log
         }
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->getContent();
     }
 }
