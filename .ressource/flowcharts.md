@@ -1,6 +1,11 @@
 1. Page d'accueil :
     - Utilisateur se connecte à l'outil avec des identifiants.
-
+    <div align="center">
+        <img 
+            src="./img/flowchart_user_start.svg" 
+            height="400px"
+        />
+    </div>
 
 2. Tableau de bord :
     - Après connexion, l'utilisateur voit un tableau de bord qui répertorie les fichiers de logs précédemment ajoutés.
@@ -9,7 +14,12 @@
 3. Ajout de fichiers de logs :
     - L'utilisateur peut téléverser un fichier de logs depuis son interface.
     - Le fichier est ensuite ingéré par le système.
-
+    <div align="center">
+        <img 
+            src="./img/flowcharts_ingestion.png" 
+            height="400px"
+        />
+    </div>
 
 4. Liste des fichiers :
     - Le tableau de bord est mis à jour pour afficher le fichier de logs récemment ajouté.
