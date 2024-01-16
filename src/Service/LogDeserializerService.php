@@ -33,17 +33,21 @@ class LogDeserializerService
     public function deserializeLogs(array $formattedLogs): array
     {
         $deserializedLogs = [];
-        foreach ($formattedLogs as $log) {
-            preg_match('/\[(.*?)\] \[(.*?)\] \[client (.*?)\] (.*)/', $log, $matches);
 
-            $deserializedLogs[] = [
-                'timestamp' => $matches[1],
-                'level' => $matches[2],
-                'client_ip' => $matches[3],
-                'message' => trim($matches[4]),
-            ];
+        foreach ($formattedLogs as $log) {
+            if (preg_match('/\[(.*?)\] \[(.*?)\] \[client (.*?)\] (.*)/', $log, $matches)) {
+                $deserializedLogs[] = [
+                    'timestamp' => $matches[1] ?? null,
+                    'level' => $matches[2] ?? null,
+                    'client_ip' => $matches[3] ?? null,
+                    'message' => isset($matches[4]) ? trim($matches[4]) : null,
+                ];
+            } else {
+                trigger_error("Failed to match log entry: $log", E_USER_WARNING);
+            }
         }
 
         return $deserializedLogs;
     }
+
 }
