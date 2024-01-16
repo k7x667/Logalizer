@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DashboardController!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {% for log in logDeserialized %}
+            <code>
+                <p >
+                    $>
+                    <span class="red">{{log['level']}}</span>
+                    <span class="violet">{{log['client_ip']}}</span>
+                    <span class="orange">{{log['message']}}</span>
+                </p>
+            </code>
+        {% endfor %}
+    </div>
+{% endblock %}

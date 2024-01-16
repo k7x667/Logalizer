@@ -18,21 +18,9 @@ class HomepageController extends AbstractController
     #[Route('/', name: 'app_homepage')]
     public function index(): Response
     {
-        $log = $this->doctrine->getRepository(Log::class)->findAll();
-
-        foreach ($log as $log) 
-        {
-            $log = $log->content;
-        }
-
-
-        $logDeserializerService = new LogDeserializerService();
         
-        $logFormatted = $logDeserializerService->formatLogEntries($log);
-        $logDeserialized = $logDeserializerService->deserializeLogs($logFormatted);
-
         return $this->render('homepage/index.html.twig', [
-            'data' => $logDeserialized,
+            'data' => 'Hello world',
         ]);
     }
 }
