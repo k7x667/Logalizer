@@ -6,14 +6,14 @@
 
     <div class="container">
         {% for log in data %}
-
-            <p class="ubuntu-regular">
-                $>
-                <span class="red">{{log['level']}}</span>
-                <span class="violet">{{log['client_ip']}}</span>
-                <span class="orange">{{log['message']}}</span>
-            </p>
-
+            <code>
+                <p >
+                    $>
+                    <span class="red">{{log['level']}}</span>
+                    <span class="violet">{{log['client_ip']}}</span>
+                    <span class="orange">{{log['message']}}</span>
+                </p>
+            </code>
         {% endfor %}
     </div>
 

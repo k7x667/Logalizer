@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Log;
-use App\Service\DeserializerService;
+use App\Service\LogDeserializerService;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,13 +26,13 @@ class HomepageController extends AbstractController
         }
 
 
-        $deserializerService = new DeserializerService();
-
-        $formattedLog = $deserializerService->formatter($log);
-        $deserializedLog = $deserializerService->deserializer($formattedLog);
+        $logDeserializerService = new LogDeserializerService();
+        
+        $logFormatted = $logDeserializerService->formatLogEntries($log);
+        $logDeserialized = $logDeserializerService->deserializeLogs($logFormatted);
 
         return $this->render('homepage/index.html.twig', [
-            'data' => $deserializedLog,
+            'data' => $logDeserialized,
         ]);
     }
 }
