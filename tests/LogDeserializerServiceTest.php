@@ -57,5 +57,12 @@ class LogDeserializerServiceTest extends TestCase
         ], $deserializedLogs[1]);
     }
 
-    
+    public function testFormatterWithoutData(): void
+    {
+        $rawData = "[2022-01-01] [INFO] [client ] Log entry 1\n[2022-01-02] [ERROR] [client 192.168.1.1] ";
+
+        $formattedLog =  $this->logDeserializerService->formatLogEntries($rawData);
+
+        
+    }
 }
