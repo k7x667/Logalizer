@@ -75,3 +75,47 @@
   li {
     list-style-type: none;
   }
+
+  .row {
+    display: flex;
+    gap: 20px;
+  }
+
+  .column-25 {
+    flex: 20%;
+  }
+  
+  .column-50 {
+    flex: 45%;
+  }
+
+  .column-75 {
+    flex: 70%;
+  }
+
+  .container-log {
+    background-color: black;
+    border: 2px solid rgb(85, 0, 124);
+    overflow: scroll; 
+    width: 96%; 
+    height: 25em;
+    -ms-overflow-style: none;  
+    scrollbar-width: none;
+    padding: 2%;
+  }
+
+  .container-log::-webkit-scrollbar {
+    display: none
+  }
+
+  .container-blog {
+    overflow: scroll;
+    width: 100%;
+    height: 600px;
+    -ms-overflow-style: none;  
+    scrollbar-width: none;
+  }
+
+  .container-blog::-webkit-scrollbar {
+    display: none
+  }

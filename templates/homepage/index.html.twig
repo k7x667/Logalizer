@@ -4,11 +4,44 @@
 
 {% block body %}
 
-    {% for post in blogs %}
-        <a href="/blog/{{ post.id }}" >{{ post.title }}</a>
-        <img width="400px" src={{ post.img }} />
-        {{ post.content }}
-        <hr>
-    {% endfor %}
+<div class="row">
+  <div class="column-75">
+    <h1>Log :</h1>
+        <div class="container-log">
+            {% for log in logDeserialized %}
+                <code>
+                    <p>
+                        $>
+                        <span class="violet">[{{ log['timestamp'] }}]</span>
+                        <span class="red">[{{log['level']}}]</span>
+                        <span class="violet">[{{log['client_ip']}}]</span> >
+                        <span class="orange">{{log['message']}}</span>
+                    </p>
+                </code>
+            {% endfor %}
+        </div>
+  </div>
+  <div class="column-25">
+    <h1>Blog :</h1>
+        <div class="container-blog ubuntu-regular">
+            {% for post in blogs %}
+                <h1>
+                    <a class="white" href="/blog/{{ post.id }}" >
+                        {{ post.title }}
+                    </a>
+                </h1>
+
+                <img width="400px" src={{ post.img }} />
+
+                <p>
+                    {{ post.content }}
+                </p>
+                <hr>
+            {% endfor %}
+        </div>
+  </div>
+</div>
+
+    
 
 {% endblock %}

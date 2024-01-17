@@ -20,9 +20,21 @@ class HomepageController extends AbstractController
     public function index(): Response
     {
         $blogRepository = $this->doctrine->getRepository(Blog::class)->findAll();
+        $log = $this->doctrine->getRepository(Log::class)->findAll();
+        
+        foreach ($log as $log)
+        {
+            $log = $log->content;
+        }
+
+        $logDeserializerService = new LogDeserializerService();
+        
+        $logFormatted = $logDeserializerService->formatLogEntries($log);
+        $logDeserialized = $logDeserializerService->deserializeLogs($logFormatted);
 
         return $this->render('homepage/index.html.twig', [
-            'blogs' => $blogRepository,
+            'blogs'     => $blogRepository,
+            'logDeserialized'      => $logDeserialized,
         ]);
     }
 }
