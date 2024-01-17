@@ -4,10 +4,28 @@
 
 {% block body %}
     <div class="container">
+    <form method="post" id="logFilterForm">
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date">
+
+        <label for="logLevel">Level de Log:</label>
+        <select id="logLevel" name="logLevel">
+            <option value="">Tous les niveaux</option>
+            <option value="info">Info</option>
+            <option value="warn">warn</option>
+            <option value="error">Error</option>
+        </select>
+
+        <label for="search">Recherche:</label>
+        <input type="text" id="search" name="search" placeholder="Entrez un terme de recherche">
+
+        <button type="submit">Filtrer les Logs</button>
+    </form>
         {% for log in logDeserialized %}
             <code>
                 <p >
                     $>
+                    <span class="violet">{{log['timestamp']}}</span>
                     <span class="red">{{log['level']}}</span>
                     <span class="violet">{{log['client_ip']}}</span>
                     <span class="orange">{{log['message']}}</span>

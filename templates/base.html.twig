@@ -12,13 +12,19 @@
         {% endblock %}
     </head>
     <body>
-    <ul>
-        <li><a class="white" href="/">Home</a></li>
-        <li><a class="white" href="/dashboard">Dashboard</a></li>
-        <li><a class="white" href="/register">Register</a></li>
-        <li><a class="white" href="/login">Login</a></li>
-        <li><a class="white" href="/logout">Logout</a></li>
-    </ul>
+    <header>
+        <nav>
+            <ul>
+                <li><a class="white" href="/">Home</a></li>
+                <li><a class="white" href="/dashboard">Dashboard</a></li>
+            </ul>
+            <ul>
+                <li><a class="white" href="/register">Register</a></li>
+                <li><a class="white" href="/login">Login</a></li>
+                <li><a class="white" href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
         {% block body %}{% endblock %}
     </body>
 </html>
