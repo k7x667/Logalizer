@@ -63,4 +63,15 @@
   .violet {
     color: rgb(211, 171, 249)
   }
+
+  .white {
+    color: rgb(255, 255, 255);
+  }
   
+  a {
+    text-decoration: none;
+  }
+
+  li {
+    list-style-type: none;
+  }
