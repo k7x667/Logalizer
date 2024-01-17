@@ -4,6 +4,11 @@
 
 {% block body %}
 
-    {{ data }}
+    {% for post in blogs %}
+        <a href="/blog/{{ post.id }}" >{{ post.title }}</a>
+        <img width="400px" src={{ post.img }} />
+        {{ post.content }}
+        <hr>
+    {% endfor %}
 
 {% endblock %}

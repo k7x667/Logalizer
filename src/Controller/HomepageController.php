@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Blog;
 use App\Entity\Log;
 use App\Service\LogDeserializerService;
 use Doctrine\Persistence\ManagerRegistry;
@@ -18,9 +19,10 @@ class HomepageController extends AbstractController
     #[Route('/', name: 'app_homepage')]
     public function index(): Response
     {
-        
+        $blogRepository = $this->doctrine->getRepository(Blog::class)->findAll();
+
         return $this->render('homepage/index.html.twig', [
-            'data' => 'Hello world',
+            'blogs' => $blogRepository,
         ]);
     }
 }

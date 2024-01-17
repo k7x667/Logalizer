@@ -3,30 +3,14 @@
 {% block title %}Blog{% endblock %}
 
 {% block body %}
-    <h1>Blog</h1>
+    <a href="{{ path('app_homepage') }}">Go to homepage</a>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ blog.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ blog.title }}</td>
-            </tr>
-            <tr>
-                <th>Img</th>
-                <td>{{ blog.img }}</td>
-            </tr>
-            <tr>
-                <th>Content</th>
-                <td>{{ blog.content }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div>
+        <h1>{{ blog.title }}</h1>
+        <img width="400px" src={{ blog.img }} />
+        <p>{{ blog.content }}</p>
+    </div>
 
-    <a href="{{ path('app_blog_index') }}">back to list</a>
 
     <a href="{{ path('app_blog_edit', {'id': blog.id}) }}">edit</a>
 

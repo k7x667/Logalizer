@@ -15,11 +15,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class BlogController extends AbstractController
 {
     #[Route('/', name: 'app_blog_index', methods: ['GET'])]
-    public function index(BlogRepository $blogRepository): Response
+    public function index(): Response
     {
-        return $this->render('blog/index.html.twig', [
-            'blogs' => $blogRepository->findAll(),
-        ]);
+        return $this->redirectToRoute('app_dashboard');
     }
 
     #[Route('/new', name: 'app_blog_new', methods: ['GET', 'POST'])]
