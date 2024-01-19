@@ -3,34 +3,29 @@
 {% block title %}Hello DashboardController!{% endblock %}
 
 {% block body %}
-    <div class="container">
-    <form method="post" id="logFilterForm">
-        <label for="date">Date:</label>
-        <input type="date" id="date" name="date">
-
-        <label for="logLevel">Level de Log:</label>
-        <select id="logLevel" name="logLevel">
-            <option value="">Tous les niveaux</option>
-            <option value="info">Info</option>
-            <option value="warn">warn</option>
-            <option value="error">Error</option>
-        </select>
-
-        <label for="search">Recherche:</label>
-        <input type="text" id="search" name="search" placeholder="Entrez un terme de recherche">
-
-        <button type="submit">Filtrer les Logs</button>
-    </form>
-        {% for log in logDeserialized %}
-            <code>
-                <p >
-                    $>
-                    <span class="violet">{{log['timestamp']}}</span>
-                    <span class="red">{{log['level']}}</span>
-                    <span class="violet">{{log['client_ip']}}</span>
-                    <span class="orange">{{log['message']}}</span>
-                </p>
-            </code>
-        {% endfor %}
+    <div class="row">
+        <div class="column-25 border-4 poppins">
+            <h1 class="white">
+                Filter :
+            </h1>
+        </div>
+        <div class="column-75 poppins">
+            <h1 class="white">
+                Logs :
+            </h1>
+            <div class="container-log">
+                {% for log in logDeserialized %}
+                    <code>
+                        <p>
+                            $>
+                            <span class="violet">[{{ log['timestamp'] }}]</span>
+                            <span class="red">[{{log['level']}}]</span>
+                            <span class="green">[{{log['client_ip']}}]</span> >
+                            <span class="orange">{{log['message']}}</span>
+                        </p>
+                    </code>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 {% endblock %}

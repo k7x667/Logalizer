@@ -28,6 +28,8 @@ class DashboardController extends AbstractController
         $logFormatted = $logDeserializerService->formatLogEntries($log);
         $logDeserialized = $logDeserializerService->deserializeLogs($logFormatted);
 
+        
+
         return $this->render('dashboard/index.html.twig', [
             'logDeserialized' => $logDeserialized,
         ]);

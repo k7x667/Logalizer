@@ -1,44 +1,9 @@
-@import url(./font-ubuntu.css);
-
-body {
-    background-color: rgb(15, 0, 50);
-    color: white;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
-
-header {
-    background-color: rgb(10, 5, 30);
-    padding: 10px;
-}
-
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-nav {
-    display: flex;
-    justify-content: space-around;
-}
- ul li {
-    display: inline-block;
-    margin-right: 20px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-/* Hover effect */
-nav ul li a:hover {
-    color: #ffd700; /* Change the color on hover as per your preference */
-}
+@import url(./css/__settings.css);
+@import url(./css/__font.css);
+@import url(./css/__btn.css);
+@import url(./css/__hero.css);
+@import url(./css/__header.css);
+@import url(./css/__dashboard.css);
+@import url(./css/__scrollbar.css);
+@import url(./css/__colors.css);
 

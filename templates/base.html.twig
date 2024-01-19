@@ -8,23 +8,54 @@
         {% endblock %}
 
         {% block javascripts %}
-{% block importmap %}{{ importmap('app') }}{% endblock %}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
     <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a class="white" href="/">Home</a></li>
-                <li><a class="white" href="/dashboard">Dashboard</a></li>
-            </ul>
-            <ul>
-                <li><a class="white" href="/register">Register</a></li>
-                <li><a class="white" href="/login">Login</a></li>
-                <li><a class="white" href="/logout">Logout</a></li>
-            </ul>
-        </nav>
+    <header class="header">
+        <div class="container-logo">
+            <img 
+                src={{ asset('./logo.png')}} 
+                class="img-header-logo"
+            >
+            <h1 class="title-header poppins">        
+                Logalizer
+            </h1>
+        </div>
+        <ul class="group-list-header">
+            <li class="element-list-header">
+                <button class="gm-btn btn">
+                    <a
+                        class="link-list-header poppins white"
+                        href="/"
+                    >
+                        Home
+                    </a>
+                </button>
+            </li>
+            <li class="element-list-header">
+                <button class="gm-btn btn">
+                    <a
+                        class="link-list-header poppins white"
+                        href="/dashboard"
+                    >
+                        Dashboard
+                    </a>
+                </button>
+            </li>
+            <li class="element-list-header">
+                <button class="gm-btn btn">
+                    <a
+                        class="link-list-header poppins white"
+                        href="/login"
+                    >
+                        Account
+                    </a>
+                </button>
+            </li>
+        </ul>
     </header>
+
         {% block body %}{% endblock %}
     </body>
 </html>

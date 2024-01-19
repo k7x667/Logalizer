@@ -1,0 +1,46 @@
+.gm-btn{
+    background: none;
+    border: none;
+    padding: 5px 15px;
+    font-size: 16px;
+    line-height: 24px;
+    width: 400;
+    transition: 0.3s;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+}
+.btn::before
+{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    transition: 0.5s;
+}
+.btn{
+    border: 2px solid var(--gb-51);
+    border-radius: 5px;
+    box-shadow: 3px 3px 0 var(--gb-51);
+    font-size: 1.125rem;
+    font-weight: 700;
+    overflow: hidden;
+    color: var(--gb-51);
+}
+.btn::before{
+    top: 100%;
+    left: 0;
+    width: 150%;
+    aspect-ratio: 1;
+    background: var(--gb-51);
+    transform: translate(50%,0%) rotateZ(-45deg);
+}
+.btn:hover::before{
+    transform: translate(-20%,-60%) rotateZ(-45deg);
+}
+.btn:hover{
+    box-shadow: 0 0 0;
+    color: #eee;
+}
+:root{
+    --gb-51: #FF00F5;
+}

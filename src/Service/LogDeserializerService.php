@@ -36,8 +36,14 @@ class LogDeserializerService
 
         foreach ($formattedLogs as $log) {
             if (preg_match('/\[(.*?)\] \[(.*?)\] \[client (.*?)\] (.*)/', $log, $matches)) {
+
+                $dateConverterService = new DateConverterService();
+                $dateConverted = $dateConverterService->convertToTimestamp($matches[1]);
+
+                $dataFormatted = $dateConverterService->convertToFormattedDate($dateConverted);
+
                 $deserializedLogs[] = [
-                    'timestamp' => $matches[1] ?? null,
+                    'timestamp' => $dataFormatted ?? null,
                     'level' => $matches[2] ?? null,
                     'client_ip' => $matches[3] ?? null,
                     'message' => isset($matches[4]) ? trim($matches[4]) : null,
@@ -49,5 +55,4 @@ class LogDeserializerService
 
         return $deserializedLogs;
     }
-
 }
