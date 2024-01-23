@@ -17,9 +17,9 @@ class NormalizerService {
      *
      * @return array An array containing individual log entries.
      */
-    public function formatLogEntries(string $rawData): array
+    public function formatLogEntries(array $rawData): array
     {
-        preg_match_all('/\[.*?\] \[.*?\] \[.*?\] .*/', $rawData, $matches);
+        preg_match_all('/\[.*?\] \[.*?\] \[.*?\] .*/', $rawData[0], $matches);
 
         return $matches[0];
     }

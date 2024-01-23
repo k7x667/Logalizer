@@ -3,8 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Log;
-use App\Service\MessageParserService;
-use App\Service\LogDeserializerService;
 use App\Service\NormalizerService;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,7 +15,6 @@ class DashboardController extends AbstractController
 
     #[Route('/dashboard', name: 'app_dashboard')]
     public function index(
-        LogDeserializerService $logDeserializerService,
         NormalizerService $normalizerService,
     ): Response
     {
@@ -27,24 +24,20 @@ class DashboardController extends AbstractController
             $logContent[] = $log->getContent();
         }
         
-        //$logFormatted = $logDeserializerService->formatLogEntries($log);
-        //$logParsed = $logDeserializerService->deserializeLogs($logFormatted);
-        $logFormatted = $normalizerService->parseLog($logContent);
-        // dd($logFormatted);
-        $messageFormatted = [];
+        
+        $logsFormatted[] = $normalizerService->formatLogEntries($logContent);
 
-        foreach ($logFormatted as $logForMessage) {
-            $messageFormatted[] = $normalizerService->parseLogMessage($logForMessage['message']);
-            
+        foreach ($logsFormatted as $logFormatted) {
+            $logsParsed[] = $normalizerService->parseLog($logFormatted);
         }
 
-        $logsNormalized = array_combine($logFormatted, $messageFormatted);
-        
-        dd($logsNormalized);
+        foreach ($logsParsed[0] as $logParsed) {
+            $msgFormatted[] = $normalizerService->parseLogMessage($logParsed['message']);
+        }
 
-        return $this->render('dashboard/index.html.twig', [
-            'logFormatted' => $logFormatted,
-            'messageFormatted' => $finalLogMessage
+        return $this->json([
+            'log' => $logsFormatted,
+            'msg' => $msgFormatted,
         ]);
     }
 }
