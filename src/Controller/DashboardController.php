@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Log;
 use App\Service\MessageParserService;
 use App\Service\LogDeserializerService;
+use App\Service\NormalizerService;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,25 +18,29 @@ class DashboardController extends AbstractController
     #[Route('/dashboard', name: 'app_dashboard')]
     public function index(
         LogDeserializerService $logDeserializerService,
-        MessageParserService $messageParserService
+        NormalizerService $normalizerService,
     ): Response
     {
         $logs = $this->doctrine->getRepository(Log::class)->findAll();
         
         foreach ($logs as $log) {
-            $log = $log->getContent();
+            $logContent[] = $log->getContent();
         }
         
-        $logFormatted = $logDeserializerService->formatLogEntries($log);
-        $logParsed = $logDeserializerService->deserializeLogs($logFormatted);
+        //$logFormatted = $logDeserializerService->formatLogEntries($log);
+        //$logParsed = $logDeserializerService->deserializeLogs($logFormatted);
+        $logFormatted = $normalizerService->parseLog($logContent);
+        // dd($logFormatted);
+        $messageFormatted = [];
 
-        foreach ($logParsed as $logs) {
-            $logsMessage[] = $logs['message'];
+        foreach ($logFormatted as $logForMessage) {
+            $messageFormatted[] = $normalizerService->parseLogMessage($logForMessage['message']);
+            
         }
 
-        foreach ($logsMessage as $logMessage) {
-            $finalLogMessage[] = $messageParserService->parseLogLine($logMessage);
-        }
+        $logsNormalized = array_combine($logFormatted, $messageFormatted);
+        
+        dd($logsNormalized);
 
         return $this->render('dashboard/index.html.twig', [
             'logFormatted' => $logFormatted,

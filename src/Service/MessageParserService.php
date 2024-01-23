@@ -44,7 +44,6 @@ class MessageParserService
             }
         }
 
-        // If no pattern matches, return the original log line
         return ['type' => 'unknown', 'data' => $logLine];
     }
 }
