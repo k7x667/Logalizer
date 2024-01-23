@@ -15,7 +15,32 @@
                 
             </h1>
             <div class="container-log">
+                {% for log in messageFormatted %}
+
+                {{ dump(log) }}
+
+                    {% if log['type'] == 'request' %}
+
+                        <span>Request : {{ dump(log) }}</span>
+
+                    {% endif %}
+
                 
+
+                    {% if log['type'] == 'server_action' %}
+
+                        <span>Server_action : {{ dump(log) }}</span>
+
+                    {% endif %}
+
+                    {% if log['type'] == 'unknown' %}
+
+                        <span>unknown : {{ dump(log) }}</span>
+
+                    {% endif %}
+
+                    
+                {% endfor %}
             </div>
         </div>
     </div>
