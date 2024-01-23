@@ -14,7 +14,7 @@ class Log
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    public ?int $id = null;
 
     #[ORM\Column(type: Types::TEXT)]
     public ?string $content = null;

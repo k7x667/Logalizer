@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Blog;
 use App\Entity\Log;
 use App\Service\LogDeserializerService;
+use App\Service\RegisterDetailService;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

@@ -1,0 +1,56 @@
+<?php
+
+/*
+namespace App\Service;
+
+use App\Entity\Details;
+use App\Entity\Log;
+use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
+
+class RegisterDetailService
+{
+    private $entityManager;
+
+    public function __construct(
+        EntityManagerInterface $entityManager, 
+        private ManagerRegistry $doctrine,
+        private LogDeserializerService $service 
+    )
+    {
+        $this->entityManager = $entityManager;
+        $this->service = $service;
+    }
+
+    public function saveLogDetails(array $logData, Log $log): void
+    {
+        $logRepository = $this->doctrine->getRepository(Log::class)->findBy(['id' => $log->getId()]);
+
+        foreach ($logRepository as $log) {
+            $parsedLog = $this->service->formatLogEntries($log->getContent());
+            $logNormalized = $this->service->deserializeLogs($parsedLog);
+        }
+
+        dd($logNormalized);
+
+        
+
+        $details = new Details();
+
+
+        if (!empty($log)) {
+            $details->setLog($log->getId());
+        }
+
+        $details->setTimestemp($logData['timestamp']);
+        $details->setLevel($logData['level']);
+        $details->setClientIp($logData['client_ip']);
+        $details->setMessage($logData['message']);
+
+        dd($details);
+
+        $this->entityManager->persist($details);
+        $this->entityManager->flush();
+    }
+}
+*/
