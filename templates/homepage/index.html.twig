@@ -8,17 +8,7 @@
   <div>
     <h1 class="violet">Historique des logs :</h1>
         <div class="container-log">
-            {% for log in logDeserialized %}
-                <code>
-                    <p>
-                        $>
-                        <span class="violet">[{{ log['timestamp'] }}]</span>
-                        <span class="red">[{{log['level']}}]</span>
-                        <span class="green">[{{log['client_ip']}}]</span> >
-                        <span class="orange">{{log['message']}}</span>
-                    </p>
-                </code>
-            {% endfor %}
+            
         </div>
   </div>
   <div>

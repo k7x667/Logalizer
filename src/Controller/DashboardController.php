@@ -27,6 +27,8 @@ class DashboardController extends AbstractController
         
         $logsFormatted[] = $normalizerService->formatLogEntries($logContent);
 
+        
+
         foreach ($logsFormatted as $logFormatted) {
             $logsParsed[] = $normalizerService->parseLog($logFormatted);
         }
@@ -36,7 +38,7 @@ class DashboardController extends AbstractController
         }
 
         return $this->json([
-            'log' => $logsFormatted,
+            'log' => $logParsed,
             'msg' => $msgFormatted,
         ]);
     }
