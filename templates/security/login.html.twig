@@ -15,14 +15,14 @@
     {% endif %}
 
     <div class="container-log container">
-        <label for="inputEmail poppins">Email</label>
-        <input type="email" name="email" id="inputEmail" placeholder="john.doe@exemple.com" class="form-control" autocomplete="email" required autofocus>
-        <label for="inputPassword poppins">Password</label>
-        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+        <input type="email" name="email"  placeholder="john.doe@exemple.com" class="form-control" autocomplete="email" required autofocus>
+        <input type="password" name="password" class="form-control" autocomplete="current-password" required>
 
         <input type="hidden" name="_csrf_token"
             value="{{ csrf_token('authenticate') }}"
         >
+        
         <button class="gm-btn btn" type="submit">
                 SIGN IN
         </button>

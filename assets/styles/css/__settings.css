@@ -55,11 +55,12 @@ hr {
     background-color: transparent;
     padding: 8px;
     width: 90%;
+    color: rgb(255, 255, 255);
     outline: none;
     border-radius: 5px;
     box-sizing: border-box;
-  }
+}
   
-  .form-control:focus {
+.form-control:focus {
     border: 2px solid rgb(255, 143, 199);
-  }
+}
