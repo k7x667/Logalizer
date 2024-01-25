@@ -49,3 +49,17 @@ hr {
     background-color: #5e5e5e;
     border: none;
 }
+
+.form-control {
+    border: 2px solid #FF00F5;
+    background-color: transparent;
+    padding: 8px;
+    width: 90%;
+    outline: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .form-control:focus {
+    border: 2px solid rgb(255, 143, 199);
+  }
