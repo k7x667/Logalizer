@@ -70,8 +70,8 @@ class ApiController extends AbstractController
         $testLogalizer = new TestLogalizer();
         $testLogalizer->parseLogs($logContent);
 
-        die();
+        //die();
 
-        return $this->jsonResponseFactory->create($logs);
+        // return $this->jsonResponseFactory->create(json_encode($logs, JSON_PRETTY_PRINT));
     }
 }

@@ -4,43 +4,55 @@
 
 {% block body %}
     <div class="row">
-        <div class="column-25 border-4 poppins">
+        <div class="column-25 container-log font-log">
             <h1 class="white">
-                Filter :
+                Filter
+                <hr>
             </h1>
         </div>
-        <div class="column-75 poppins">
-            <h1 class="white">
-                Logs :
-                
-            </h1>
-            <div class="container-log">
-                {% for log in messageFormatted %}
+        <div class="column-75 container-log">
+            <div class="row font-log">
+                <div class="column-33">
+                    <h1 class="white">Message</h1>
+                    <div class="row">
+                        <div class="column-33">
+                            {% for log in logs %}
+                                <span class="white">{{ log.timestamp }}</span>
+                                <span class="green">[ {{ log.level }} ]</span>
+                                <span class="orange">{{ log.client_ip }}</span><br>
+                                <hr>
+                            {% endfor %}
+                        </div>
+                        <div class="column-66">
+                            {% for m in msg %}
+                                {% if m['type'] == "server_action" %}
+                                    <span>
+                                        <span class="orange">{{ m['data']['service_name'] }}</span>
+                                            : 
+                                            <span class="green">{{ m['data']['action'] }}</span>
+                                    </span><br><hr>
+                                {% endif %}
 
-                {{ dump(log) }}
+                                {% if m['type'] == "request" %}
+                                    <span>
+                                        <span class="green">{{ m['data']['method'] }}</span>
+                                        <span class="white">{{ m['data']['page_request'] }}</span>
+                                        <span class="orange">{{ m['data']['status_code'] }}</span>
+                                        <span class="red">{{ m['data']['latency'] }}ms</span>
+                                    </span>
+                                    
+                                    <br><hr>
+                                {% endif %}
 
-                    {% if log['type'] == 'request' %}
+                                {% if m['type'] == "message" %}
 
-                        <span>Request : {{ dump(log) }}</span>
+                                    <span class="white">{{ m['data'] }}</span><br><hr>
 
-                    {% endif %}
-
-                
-
-                    {% if log['type'] == 'server_action' %}
-
-                        <span>Server_action : {{ dump(log) }}</span>
-
-                    {% endif %}
-
-                    {% if log['type'] == 'unknown' %}
-
-                        <span>unknown : {{ dump(log) }}</span>
-
-                    {% endif %}
-
-                    
-                {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

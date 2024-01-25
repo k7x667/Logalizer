@@ -3,36 +3,20 @@
 {% block title %}Hello HomepageController!{% endblock %}
 
 {% block body %}
-
-<div class="poppins">
-  <div>
-    <h1 class="violet">Historique des logs :</h1>
-        <div class="container-log">
-            
-        </div>
-  </div>
-  <div>
-    <h1 class="violet">Blog :</h1>
-        <div class="row">
-            {% for post in blogs %}
-                <div class="column-33 border-4">
-                    <h1>
-                        <a class="white" href="/blog/{{ post.id }}" >
-                            {{ post.title }}
-                        </a>
-                    </h1>
-
-                    <img width="100%" src={{ post.img }} />
-
-                    <p>
-                        {{ post.content }}
-                    </p>
-                    <hr>
-                </div>
-            {% endfor %}
-        </div>
-  </div>
+<div class="container">
+    <h1 class="hero poppins">The Best Normalizer
+        <span class="montserrat-alt gradient-hero">Apache Log's</span>
+        <button class="gm-btn btn">
+            <a
+                class="link-list-header poppins white"
+                href="/dashboard"
+            >
+                GET STARTED
+            </a>
+        </button>
+    </h1>
 </div>
+
 
     
 

@@ -37,9 +37,13 @@ class DashboardController extends AbstractController
             $msgFormatted[] = $normalizerService->parseLogMessage($logParsed['message']);
         }
 
-        return $this->json([
-            'log' => $logParsed,
-            'msg' => $msgFormatted,
+        $fullLogs = array_slice($logsParsed[0], 0, 100);
+        $fullMsg = array_slice($msgFormatted, 0, 100);
+        
+
+        return $this->render('dashboard/index.html.twig', [
+            'logs' => $fullLogs,
+            'msg'   => $fullMsg,
         ]);
     }
 }

@@ -60,14 +60,16 @@ class NormalizerService {
     public function parseLogMessage(string $log): array {
         foreach ($this->patterns as $pattern => $type) {
             if (preg_match($pattern, $log, $matches)) {
+                
                 return [
                     'type' => $type, 
-                    'data' => $matches
+                    'data' => array_unique($matches)
                 ];
             }
         }
 
         return [
+            'type' => 'message',
             'data' => $log
         ];
     }
