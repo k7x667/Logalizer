@@ -1,8 +1,11 @@
 # Logalizer
 
-![log files](./.ressource/img/capture_log.png)
 
-### [Flowchart](./.ressource/flowcharts.md)
+## Homepage
+![Homepage](./.ressource/img/homepage.png)
 
-### [CDC By GPT](./.ressource/cdcbygpt.md)
+## Dashboard
+![Dashboard](./.ressource/img/dashboard.png)
 
+## Upload
+![Upload](./.ressource/img/upload.png)
